@@ -1,0 +1,26 @@
+<odoo>
+  <!-- Client action to open the editor -->
+  <record id="action_open_drawio_editor" model="ir.actions.client">
+    <field name="name">Open Draw.io Editor</field>
+    <field name="tag">knowledge_drawio.open_editor</field>
+  </record>
+
+  <!-- Extend Knowledge form with a button and fields -->
+  <record id="view_knowledge_article_form_drawio" model="ir.ui.view">
+    <field name="name">knowledge.article.form.drawio</field>
+    <field name="model">knowledge.article</field>
+    <field name="inherit_id" ref="knowledge.knowledge_article_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet" position="inside">
+        <group string="Diagram">
+          <button type="action" string="Edit Diagram"
+                  name="%(action_open_drawio_editor)d"
+                  class="oe_highlight"/>
+          <field name="diagram_png" widget="image" class="oe_avatar"/>
+          <field name="diagram_xml" invisible="1"/>
+          <field name="diagram_name"/>
+        </group>
+      </xpath>
+    </field>
+  </record>
+</odoo>
